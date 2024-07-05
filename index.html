@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input to PDF</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f5f5f5;
+    }
+
+    .container {
+        width: 90%;
+        max-width: 600px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header {
+        margin-top: 1300px;
+        text-align: center;
+        margin-bottom: 20px;
+        margin-left: 500px;
+    }
+
+    .header img {
+        max-width: 100px;
+        height: auto;
+    }
+
+    .header .address {
+        margin-top: 10px;
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    label {
+        margin-top: 10px;
+    }
+
+    input,
+    textarea,
+    button {
+        margin-top: 5px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+    }
+
+    button {
+        margin-top: 20px;
+        background-color: #4CAF50;
+        color: white;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+
+    .date-time {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 14px;
+        color: gray;
+    }
+</style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <img src="./logo.jpg" alt="Logo" id="logo">
+            <div class="address">1234 Street Name, City, Country</div>
+        </div>
+        <h1>Input to PDF</h1>
+        <form id="inputForm">
+            <label for="name">Goat Id:</label>
+            <input type="text" id="goatId" name="goatId" placeholder="ID Number">
+            <label for="name">Goat Sex:</label>
+            <input type="text" id="goatSex" name="goatSex" placeholder="Sex">
+            <label for="name">goatWeight:</label>
+            <input type="number" id="goatWeight" name="goatWeight" placeholder="Weight (kg)">
+            <label for="symptoms">Symptoms:</label>
+            <textarea id="symptoms" name="symptoms" rows="1" placeholder="Describe symptoms in detail..."></textarea>
+
+            <label for="duration">Duration of Illness:</label>
+            <textarea id="duration" name="duration" rows="1"
+                placeholder="When symptoms started and duration..."></textarea>
+
+            <label for="temperature">Temperature:</label>
+            <input type="number" id="temperature" name="temperature" placeholder="Temperature (°F)">
+
+            <label for="feedWaterIntake">Feed and Water Intake:</label>
+            <textarea id="feedWaterIntake" name="feedWaterIntake" rows="1"
+                placeholder="Amount of food and water consumed..."></textarea>
+
+            <label for="vaccinationHistory">Vaccination History:</label>
+            <textarea id="vaccinationHistory" name="vaccinationHistory" rows="1"
+                placeholder="Vaccinations received, dates and types..."></textarea>
+
+            <label for="medicalHistory">Medical History:</label>
+            <textarea id="medicalHistory" name="medicalHistory" rows="1"
+                placeholder="Previous illnesses, surgeries, or conditions..."></textarea>
+
+            <label for="pregnancyStatus">Pregnancy Status:</label>
+            <textarea id="pregnancyStatus" name="pregnancyStatus" rows="1"
+                placeholder="Stage of pregnancy or recent kidding history..."></textarea>
+
+            <label for="milkProduction">Milk Production:</label>
+            <textarea id="milkProduction" name="milkProduction" rows="1"
+                placeholder="Milk yield and any changes..."></textarea>
+
+            <label for="environmentalFactors">Environmental Factors:</label>
+            <textarea id="environmentalFactors" name="environmentalFactors" rows="1"
+                placeholder="Recent changes in feed, water, exposure to toxins, stressors..."></textarea>
+            <label for="vaccinationHistory">Vaccination History:</label>
+            <textarea id="vaccinationHistory" name="vaccinationHistory" rows="2"
+                placeholder="Vaccinations received, dates and types..."></textarea>
+
+            <label for="medicalHistory">Medical History:</label>
+            <textarea id="medicalHistory" name="medicalHistory" rows="2"
+                placeholder="Previous illnesses, surgeries, or conditions..."></textarea>
+
+            <label for="pregnancyStatus">Pregnancy Status:</label>
+            <textarea id="pregnancyStatus" name="pregnancyStatus" rows="2"
+                placeholder="Stage of pregnancy or recent kidding history..."></textarea>
+
+            <label for="milkProduction">Milk Production:</label>
+            <textarea id="milkProduction" name="milkProduction" rows="2"
+                placeholder="Milk yield and any changes..."></textarea>
+
+            <label for="Nameofreporter">Nameofreporter:</label>
+            <input type="text" id="Nameofreporter" name="name">
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email">
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" rows="1" cols="50"></textarea>
+
+            <button type="button" onclick="generatePDF()">Generate PDF</button>
+        </form>
+        <div class="date-time" id="dateTime"></div>
+    </div>
+
+    <script>
+        async function generatePDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            const goatId = document.getElementById('goatId').value;
+            const goatSex = document.getElementById('goatSex').value;
+            const symptoms = document.getElementById('symptoms').value;
+            const duration = document.getElementById('duration').value;
+            const temperature = document.getElementById('temperature').value;
+            const feedWaterIntake = document.getElementById('feedWaterIntake').value;
+            const vaccinationHistory = document.getElementById('vaccinationHistory').value;
+            const medicalHistory = document.getElementById('medicalHistory').value;
+            const pregnancyStatus = document.getElementById('pregnancyStatus').value;
+            const milkProduction = document.getElementById('milkProduction').value;
+
+            const Nameofreporter = document.getElementById('Nameofreporter').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const goatWeight = document.getElementById('goatWeight').value;
+
+            html2pdf()
+            const currentDate = new Date();
+            const date = currentDate.toLocaleDateString();
+            const time = currentDate.toLocaleTimeString();
+
+            // Set text color (RGB format)
+            doc.setTextColor(0, 0, 255); // Blue color for the title
+
+            // Set font size and style
+            doc.setFontSize(25);
+            doc.setFont("helvetica", "bold" );
+            doc.text('GREEN FARMS GOAT HEATH REPORT', 59, 10);
+
+            // Reset text color to black for the rest of the text
+            doc.setTextColor(0, 0, 0);
+
+            // Set font size and style for the body
+            doc.setFontSize(12);
+            doc.setFont("helvetica", "normal");
+
+
+            doc.text(`Name: ${name}`, 10, 110)
+            doc.text(`Email: ${email}`, 10, 120)
+            doc.text(`Message: ${message}`,10, 130)  
+            doc.text(`GoatId: ${goatId}`, 10, 50)
+            doc.text(`GoatSex: ${goatSex}`, 10, 60)
+            doc.text(`GoatWeight: ${goatWeight}`, 10, 70)
+            doc.text(`Symptoms: ${symptoms}`, 10, 80)
+            doc.text(`Duration: ${duration}`, 10, 90)
+            doc.text(`Temperature: ${temperature}`, 10, 100)
+            doc.text(`FeedWaterIntake: ${feedWaterIntake}`,10, 20) 
+            doc.text(`VaccinationHistory: ${vaccinationHistory}`,10, 30) 
+            doc.text(`MedicalHistory: ${medicalHistory}`, 10, 40)
+
+            doc.text(`Date: ${date}`, 10, 140);
+            doc.text(`Time: ${time}`, 80, 140);
+
+            doc.save(`ndede.pdf`);
+        }
+
+        function updateDateTime() {
+            const dateTimeElement = document.getElementById('dateTime');
+            const now = new Date();
+            const formattedDateTime = now.toLocaleString();
+            dateTimeElement.textContent = `Date & Time: ${formattedDateTime}`;
+        }
+
+        setInterval(updateDateTime, 1000);
+        window.onload = updateDateTime;
+    </script>
+</body>
+
+</html>
