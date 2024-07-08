@@ -9,11 +9,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.2/html2pdf.bundle.min.js"></script>
 </head>
 <style>
-    body {
+   body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    padding-top: 60px; /* Adjust this value based on your header height */
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -27,8 +26,6 @@
 }
 
 header {
-    position: fixed;
-    top: 0;
     width: 100%;
     background: rgba(0, 123, 255, 0.1);
     display: flex;
@@ -37,7 +34,6 @@ header {
     backdrop-filter: blur(10px);
     color: #ccc;
     padding: 10px;
-    z-index: 1000;
     animation: fadeInHeader 1s ease-in-out;
 }
 
@@ -159,7 +155,6 @@ button:hover {
     }
 
     .container {
-        margin-top: 220px;
         padding: 1.5rem;
     }
 
