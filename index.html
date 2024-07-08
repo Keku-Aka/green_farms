@@ -10,119 +10,167 @@
 </head>
 <style>
     body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-image: url("bach.jpg");
-        background-size: cover;
-        background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    padding-top: 60px; /* Adjust this value based on your header height */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url("bach.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+}
 
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(0, 123, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(10px);
+    color: #ccc;
+    padding: 10px;
+    z-index: 1000;
+    animation: fadeInHeader 1s ease-in-out;
+}
+
+@keyframes fadeInHeader {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
     }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
+.logo {
+    width: 100px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 1rem;
+    border-radius: 5px;
+    box-shadow: 9px 4px 20px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 600px;
+    text-align: center;
+    color: #fff;
+    margin: auto;
+    animation: fadeInContainer 1.5s ease-in-out;
+    margin-top: 60px; /* Ensure container is below the header */
+}
+
+@keyframes fadeInContainer {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+h1 {
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    color: #fff;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-form label {
+    margin-bottom: 0.5rem;
+    text-align: left;
+    color: #ff6347;
+    font-family: 'Times New Roman', Times, serif;
+    text-transform: uppercase;
+    font-size: small;
+}
+
+.auth-form input, 
+.auth-form textarea {
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid rgba(204, 204, 204, 0.3);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+
+button {
+    margin-top: 20px;
+    padding: 0.5rem 1rem;
+    background: #007bff;
+    border: none;
+    color: white;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s, transform 0.2s ease-in-out;
+}
+
+button:hover {
+    background: #0056b3;
+    transform: scale(1.05);
+}
+
+.date-time {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+@media (max-width: 430px) {
     header {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        background: rgb(0, 123, 255 .1);
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
-        backdrop-filter: blur(10px);
-        color: #ccc;
+        flex-direction: column;
+        padding: 10px;
     }
 
     .logo {
-        margin-right: 600px;
-        padding: 2px;
-        width: 100px;
-        height: auto;
-        background-color: transparent;
-        margin-left: 1px;
-        border-radius: 10px;
+        margin-bottom: 10px;
     }
-
 
     .container {
-        margin-top: 1000px;
-        position: relative;
-        background: rgb(5, 3, 3 .0.5);
-        padding: 0.5rem 1rem;
-        padding-bottom: 10px;
-        border-radius: 5px;
-        box-shadow: 9px 4px 20px rgba(0, 0, 0, .2);
-        width: 300px;
-        text-align: center;
-        margin-bottom: 90px;
-        backdrop-filter: blur(2px);
+        width: 95%;
+        margin-top: 70px; /* Ensure container stays centered vertically */
+        margin-bottom: 70px;
+    }
+}
+
+@media (min-resolution: 2dppx) and (max-width: 430px) {
+    body {
+        font-size: 1.1rem;
     }
 
-    h1 {
-        font-family: 'Times New Roman', Times, serif;
-        text-align: center;
-        border-top-left-radius: 8px;
+    .container {
+        margin-top: 220px;
+        padding: 1.5rem;
     }
 
-    form {
-        display: flex;
-        flex-direction: column;
+    header {
+        padding: 15px;
     }
 
-    .auth-form label {
-        display: block;
-        margin-bottom: 0.5rem;
-        text-align: left;
-        color: red;
-        font-family: 'Times New Roman', Times, serif;
-        text-transform: uppercase;
-        font-size: small;
+    .logo {
+        width: 120px;
     }
-
-    .auth-form input textarea {
-        width: 100%;
-        padding: 0.5rem;
-        margin-bottom: 1rem;
-        border: 1px solid rgb(204, 204, 204 .1);
-        border-radius: 10px;
-
-    }
-
-    button {
-        margin-top: 5px;
-        padding: 10px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        width: 100%;
-    }
-
-    button {
-        margin-top: 20px;
-        padding: 0.5rem 1rem;
-        background: #007bff;
-        border: none;
-        color: white;
-        border-radius: 30px;
-        cursor: pointer;
-        width: 100%;
-    }
-
-    button:hover {
-        background: #007bff;
-        color: rgb(250, 248, 246);
-        border-radius: 5px;
-
-    }
-
-
-    .date-time {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 14px;
-        color: gray;
-    }
+}
 </style>
 
 <body>
@@ -174,8 +222,23 @@
             <label for="environmentalFactors">Environmental Factors:</label>
             <textarea id="environmentalFactors" name="environmentalFactors" rows="1"
                 placeholder="Recent changes in feed, water, exposure to toxins, stressors..."></textarea>
+            <label for="vaccinationHistory">Vaccination History:</label>
+            <textarea id="vaccinationHistory" name="vaccinationHistory" rows="1"
+                placeholder="Vaccinations received, dates and types..."></textarea>
 
-            <label for="Nameofreporter">Name of Reporter:</label>
+            <label for="medicalHistory">Medical History:</label>
+            <textarea id="medicalHistory" name="medicalHistory" rows="1"
+                placeholder="Previous illnesses, surgeries, or conditions..."></textarea>
+
+            <label for="pregnancyStatus">Pregnancy Status:</label>
+            <textarea id="pregnancyStatus" name="pregnancyStatus" rows="1"
+                placeholder="Stage of pregnancy or recent kidding history..."></textarea>
+
+            <label for="milkProduction">Milk Production:</label>
+            <textarea id="milkProduction" name="milkProduction" rows="1"
+                placeholder="Milk yield and any changes..."></textarea>
+
+            <label for="Nameofreporter">Nameofreporter:</label>
             <input type="text" id="Nameofreporter" name="name">
 
             <label for="email">Email:</label>
@@ -213,13 +276,13 @@
 
 
             // Title
-            doc.setFontSize(25);
+            doc.setFontSize(16);
             doc.setFont("helvetica", "bold");
-            doc.text('ALL GREEN FARMS ANIMAL REPORT', 105, 10, null, null, "center");
+            doc.text('ALL GREEN FARMS', 105, 10, null, null, "center");
 
             // Header section
             doc.setTextColor(0, 128, 0);;
-            doc.setFontSize(15);
+            doc.setFontSize(10);
             doc.setFont("helvetica", "normal");
 
             doc.setTextColor(255, 10, 20);
